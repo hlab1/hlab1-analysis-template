@@ -43,7 +43,9 @@ renv::paths$cache()
 renv::paths$library()
 renv::init(".")
 ```
+
 e. knitting this file to HTML creates graphics in `/scratch/$USER/projects/<project_name>/results/my_real_analysis`
+
 f. can add new Rmd files by changing the dates
 
 
