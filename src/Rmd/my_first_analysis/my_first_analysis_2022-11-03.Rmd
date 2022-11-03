@@ -1,0 +1,68 @@
+---
+title: "Rmd demo"
+author: "shhuang"
+date: "11/03/2022"
+output:
+  html_document: 
+      toc: true
+      number_sections: true
+      toc_float:
+        collapsed: false
+        smooth_scroll: false
+  pdf_document: default
+editor_options: 
+  chunk_output_type: console
+---
+
+# Load libraries
+```{r load_lib,results="hide",cache=FALSE}
+library(rprojroot)
+library(R.utils)
+```
+
+# Set file paths
+- Remember to change `this_analysis_path` and `this_rmd_name`!
+```{r set_file_path,cache=FALSE}
+this_analysis_path = rprojroot::is_git_root$find_file('results','my_first_analysis')
+this_rmd_name = 'my_first_analysis_2022-11-03'
+dir.create(file.path(this_analysis_path,'graphics'), recursive=TRUE,showWarnings = FALSE)
+prefix.string = file.path(this_analysis_path,"graphics",paste0(this_rmd_name,'-'))
+rdata_prefix = file.path(this_analysis_path,paste0(this_rmd_name,'-'))
+```
+
+# Set up knitr
+```{r setup,include=FALSE,cache=FALSE}
+library(knitr)
+# set global chunk options
+opts_chunk$set(cache=TRUE) # enable cache to make it faster
+opts_chunk$set(cache.rebuild=TRUE) # enable cache to make it faster
+opts_chunk$set(fig.path=prefix.string, fig.align='center', fig.show='hold',
+               eval=TRUE,echo=TRUE,include=TRUE,
+               cache.path=file.path(this_analysis_path,"cache",paste0(this_rmd_name,'-')))
+knit_hooks$set(checkpoint = function(before, options, envir) {
+  # e.g. we skip all chunks after the chunk example-b
+  if (!before && options$label == options$checkpoint) {
+    opts_chunk$set(cache = FALSE, eval = FALSE, echo = FALSE, include = FALSE)
+    # you can do other things like dumping `envir` into globalenv(), e.g.
+    # assign('ChunkEnv', envir, envir = globalenv())
+  }
+})
+## set checkpoint=NULL to disable checkpoints
+opts_chunk$set(checkpoint = 'sessionInfo') # restore objects up to exmple-b
+## now if you knit() this document, only x exists; y is not loaded
+```
+
+
+## Make some graphics
+```{r first_hist,dev='pdf'}
+hist(rnorm(1000))
+```
+
+# About this analysis
+* This analysis was run on `r System$getHostname()` `r Sys.info()["nodename"]`.
+* Last run on `r Sys.time()`.
+* Session info
+
+```{r sessionInfo}
+sessionInfo()
+```
