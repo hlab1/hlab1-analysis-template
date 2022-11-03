@@ -30,12 +30,14 @@ cd $HOME/projects/<project_name>/src/Rmd
 cp -R my_first_analysis my_real_analysis
 ```
   b. Edit the paths in `my_real_analysis/.Renviron'
-  c.i. Copy the `my_first_analysis_2022-11-03.Rmd` file to `my_real_analysis_2022-11-04.Rmd' (note the diretory name and the first part of file name must be the same)
+
+   c.i. Copy the `my_first_analysis_2022-11-03.Rmd` file to `my_real_analysis_2022-11-04.Rmd' (note the diretory name and the first part of file name must be the same)
 ```
 cd my_real_analysis
 cp my_first_analysis_2022-11-03.Rmd my_real_analysis_2022-11-04.Rmd'
 ```
   c.ii. Change the `this_analysis_path` and `this_rmd_name` variables
+  
   d. can now make a new RStudio project to the `my_real_analysis` directory. In RStudio
 ```
 renv::paths$root()
