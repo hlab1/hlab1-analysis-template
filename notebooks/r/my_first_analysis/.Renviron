@@ -1,3 +1,4 @@
 RENV_PATHS_ROOT=/scratch/ch153/renv
 RENV_PATHS_LIBRARY_ROOT=/scratch/ch153/renv/renv_project_library/hlab1-analysis-template/my_first_analysis
 RENV_PATHS_LIBRARY_STAGING=/scratch/ch153/renv/staging
+RENV_PATHS_SANDBOX=/scratch/ch153/renv/sandbox
