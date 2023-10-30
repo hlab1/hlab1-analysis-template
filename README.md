@@ -24,9 +24,9 @@ mkdir renv
 ```
 1. This assumed you have set up renv 
 
-  1.a. Make a copy of the directory `src/Rmd/my_first_analysis` with a meaningful name (here I used `my_real_analysis`)
+  1.a. Make a copy of the directory `notebooks/r/my_first_analysis` with a meaningful name (here I used `my_real_analysis`)
 ```
-cd $HOME/projects/<project_name>/src/Rmd
+cd $HOME/projects/<project_name>/notebooks/r
 cp -R my_first_analysis my_real_analysis
 ```
   1.b. Edit the paths in `my_real_analysis/.Renviron'
